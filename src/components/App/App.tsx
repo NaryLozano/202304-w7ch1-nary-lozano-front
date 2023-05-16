@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import useApi from "../../hooks/useApi";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { loadRobotsActionCreator } from "../../store/robotsSlice/robotsSlice";
 import RobotsList from "../RobotsList/RobotsList";
-import RobotDetails from "../RobotDetails/RobotDetails";
+import LoginForm from "../LoginForm/LoginForm";
 
 const App = (): JSX.Element => {
   const { getRobots } = useApi();
@@ -29,12 +28,8 @@ const App = (): JSX.Element => {
           height="100"
         />
       </header>
-      <Router>
-        <Routes>
-          <Route path="/" element={<RobotsList robots={robots} />} />
-          <Route path="/:idRobot" element={<RobotDetails />} />
-        </Routes>
-      </Router>
+      <LoginForm />
+      <RobotsList robots={robots} />
     </>
   );
 };
